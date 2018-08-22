@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="spero.shariq.com.myopmvp10.pod1">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Postoperative review"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <!--Q-->
+        <LinearLayout android:orientation="vertical" android:background="@color/orange" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView
+                android:text="Do you have any postop problems?"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RadioGroup android:paddingBottom="5dp" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rb1"
+                    android:onClick="rb1click"
+                    android:text="YES"
+                    android:layout_marginRight="180dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"/>
+                <RadioButton
+                    android:id="@+id/rb2"
+                    android:onClick="rb2click"
+                    android:text="NO "
+                    android:background="@color/colorPrimary"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <!--Q-->
+
+        <!--Done btn-->
+        <LinearLayout
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/PreRedonebtn"
+                android:text="DONE"
+                android:textSize="30dp"
+
+                android:textColor="@color/white"
+
+                android:layout_margin="5sp"
+                android:onClick="clik"
+                android:layout_width="304dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
