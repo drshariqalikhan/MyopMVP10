@@ -52,7 +52,6 @@
             android:layout_height="wrap_content">
             <Button
                 android:id="@+id/PreRedonebtn"
-                android:visibility="invisible"
                 android:text="DONE"
                 android:textSize="30dp"
 
