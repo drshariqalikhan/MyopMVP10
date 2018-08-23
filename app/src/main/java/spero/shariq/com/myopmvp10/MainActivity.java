@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     ConnectivityManager conMgr;
     ApiInterface apiInterface;
+    PeriodicWorkRequest periodicWorkRequest;
+    MyWorker myWorker;
 
 
 
@@ -113,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
                 {
                     try{
                         SyncDataWithServer(response,editor);
+                        periodicWorkRequest = new PeriodicWorkRequest.Builder(NotificationWorker.class,16, TimeUnit.MINUTES)
+                                .build();
+                        WorkManager.getInstance().enqueue(periodicWorkRequest);
 
                     }catch (Exception e){}
                     startActivity(new Intent(MainActivity.this, TiledDashboard.class));

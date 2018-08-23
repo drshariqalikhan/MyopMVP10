@@ -35,7 +35,8 @@
         <activity android:name=".pod5" />
         <activity android:name=".pod10" />
         <activity android:name=".pod15" />
-        <activity android:name=".preop_GotoClinic"></activity>
+        <activity android:name=".preop_GotoClinic" />
+        <activity android:name=".CustomDialogActivity" android:theme="@style/Theme.Transparent"></activity>
     </application>
 
 </manifest>

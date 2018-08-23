@@ -478,36 +478,8 @@ public class TiledDashboard extends AppCompatActivity {
         }
     }
 
-//    long getUnixTimeFor(String StringDate)
-//    {
-//        //get Date from string
-//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//
-//        Date date = null;
-//        try {
-//            date = format.parse(StringDate);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        //get UTC from Date
-//            return date.getTime();
-//
-//
-//    }
-//
-//   int getDaysBetween(long t1,long t2)
-//   {
-//       return (int) ((t1-t2) / (1000*60*60*24));
-//   }
-//   String daysToOrFromNow(long time)
-//   {
-//       String res;
-//
-//       int val = (int) ((System.currentTimeMillis()-time) / (1000*60*60*24));
-//       if(val < 0 )//time is future
-//       {
-//           res = abs(val)+"days to go for surgery";
-//       }else{res = val+"days after surgery";}
-//       return res;
-//   }
+
+    public void AboutOPClick(View view) {
+        startActivity(new Intent(this, CustomDialogActivity.class));
+    }
 }

@@ -25,7 +25,7 @@ public class login extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     ApiInterface apiInterface;
-    PeriodicWorkRequest periodicWorkRequest;
+    PeriodicWorkRequest periodicWorkRequest,SyncWorkRequest;
     MyWorker myWorker;
 
     @Override
@@ -49,22 +49,27 @@ public class login extends AppCompatActivity {
         call.enqueue(new Callback<LoginData>() {
             @Override
             public void onResponse(Call<LoginData> call, Response<LoginData> response) {
+
                 try {
                     editor.putString("token", response.body().getToken());
                     editor.commit();
 
-//                    TOKEN = sharedPreferences.getString("token", "xxx");
-//                Toast.makeText(login.this, TOKEN, Toast.LENGTH_LONG).show();
+                    //start periodic 30min sync with workmanager
+                    Constraints constraints = new Constraints.Builder()
+                            .setRequiredNetworkType(NetworkType.CONNECTED)
+                            .build();
+                    SyncWorkRequest = new PeriodicWorkRequest.Builder(MyWorker.class,30, TimeUnit.MINUTES)
+                            .setConstraints(constraints)
+                            .build();
+                    WorkManager.getInstance().enqueue(SyncWorkRequest);
+
+
+
+
                     if (response.isSuccessful()) {
                         startActivity(new Intent(login.this, MainActivity.class));
-                        //start periodic 30min sync with workmanager
-                        Constraints constraints = new Constraints.Builder()
-                                .setRequiredNetworkType(NetworkType.CONNECTED)
-                                .build();
-                        periodicWorkRequest = new PeriodicWorkRequest.Builder(MyWorker.class,30, TimeUnit.MINUTES)
-                                .setConstraints(constraints)
-                                .build();
-                        WorkManager.getInstance().enqueue(periodicWorkRequest);
+
+
 
                     } else {
                         Toast.makeText(login.this, ""+"response unsuccessful!", Toast.LENGTH_LONG).show();

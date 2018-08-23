@@ -68,5 +68,6 @@ public class pod15 extends AppCompatActivity {
     }
 
     public void clik(View view) {
+        UploadDataToServer();
     }
 }
